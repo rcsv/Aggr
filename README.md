@@ -1,5 +1,8 @@
+<img src="src/icon-excel-png-7.png" align="right">
+
 # Aggr
-> A abstract program of data merge using Excel
+> Merge data you want to.
+A abstract program of data merge using Excel
 Aggr aggregates data from other excel files having the same format.
 
 ## How to use
