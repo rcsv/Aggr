@@ -14,5 +14,12 @@
 
 ' 1. Utilities Modules / Classes
 ' ------------------------------------------------------------------------
+' Utility
 ./src/utils/Utils.cls
+
+' TestCase
 ./src/utils/vbaUnit.bas
+
+' Initializable Interface & Factory method
+./src/utils/Initializable.cls
+./src/utils/mFactory.bas
