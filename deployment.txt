@@ -1,0 +1,18 @@
+'
+' Aggregation Macro
+' ------------------------------------------------------------------------
+' deploy configuration files
+'     rcsv
+'     v0.0.1
+
+
+' --- O SHI NA GA KI ---
+' 1. Utilities Modules / Classes
+' 2. Classes
+' 3. Main
+'
+
+' 1. Utilities Modules / Classes
+' ------------------------------------------------------------------------
+./src/utils/Utils.cls
+./src/utils/vbaUnit.bas
