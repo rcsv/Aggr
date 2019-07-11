@@ -20,5 +20,5 @@ Option Explicit
 
     Public Function Init(p() As Variant) As Object
     End Function
-    
+
 ' End Class
