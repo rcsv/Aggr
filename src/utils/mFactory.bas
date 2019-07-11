@@ -8,7 +8,7 @@ Attribute VB_Name = "mFactory"
 
 Option Explicit
 
-Public Function Init(o As Initializable, ParamArray p()) As Object
+Public Function Init(o As IInitializable, ParamArray p()) As Object
 
     Dim p2() As Variant, i
     ReDim p2(UBound(p))
