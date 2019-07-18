@@ -13,8 +13,8 @@
 
 ## 注意
 使用にあたっては、セキュリティセンターにて、マクロの設定の中にある開発者向けのマクロ設定、**VBA プロジェクトオブジェクトモデルへのアクセスを信頼する**にチェックを入れてください。
-<img src="doc/notice_1" align="center">
-<img src="doc/notice_2" align="center">
+<img src="doc/notice_1.png" align="center">
+<img src="doc/notice_2.png" align="center">
 
 ## License
 
