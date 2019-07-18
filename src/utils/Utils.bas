@@ -4,7 +4,7 @@ Attribute VB_NAME = "Utils"
 ' Public NotInherits Class Utils
 ' ------------------------------------------------------------------------
 '   last update: 2019-07-11
-'
+'   ENCODING: SHIFT JIS
 
 Option Explicit
 
