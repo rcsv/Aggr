@@ -22,5 +22,9 @@
 ./src/utils/vbaUnit.bas
 
 ' Initializable Interface & Factory method
-./src/utils/Initializable.cls
+./src/framework/IInitializable.cls
+./src/framework/ICategory.cls
+./src/framework/IDisabled.cls
+./src/framework/Record.cls
+
 ./src/utils/mFactory.bas
