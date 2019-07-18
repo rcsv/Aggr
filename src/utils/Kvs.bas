@@ -68,9 +68,32 @@ Option Explicit
         End With
     End Sub
 
-    ' TODO: IMPLEMENTS
+    ' public void setConfig(String key, String value)
+    ' add map tuple data into Dictionary object and worksheet "config".
+    ' @param key String
+    ' @param value String
+    '
     Public Sub setConfig(key As String, value As String)
+        Dim i As Integer: i = rowKVS_START
+        If Not hashMap.Exists(key) Then
+            hashMap.Add key, value
+        Else
+            hashMap.Item(key) = value
+        End If
 
+        Application.ScreenUpdating = False
+        With ThisWorkbook.Worksheets(wsKVS_STORAGE)
+            Do While .Cells(i, colKVS_KEY) <> ""
+                If .Cells(i, colKVS_KEY) Then
+                    .Cells(i, colKVS_VALUE) = value
+                    End Sub
+                End If
+                i = i + 1
+            Loop
+            .Cells(i, colKVS_KEY) = key
+            .Cells(i, colKVS_VALUE) = value
+        End With
+        Application.ScreenUpdating = True
     End Sub
     
 ' End Module
