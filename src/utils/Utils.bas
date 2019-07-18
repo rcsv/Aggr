@@ -10,9 +10,6 @@ Option Explicit
 
 ' Public Module Utils
 
-    ' configuration key-value-store table start fifth rows.
-    private Const rowCONF_START As Integer = 5
-
     ' default log filename is:
     private Const strLOGFILE As String = "\transaction.log"
 
@@ -25,45 +22,6 @@ Option Explicit
         ptJpBraces = 6   ' 「」日本語の鍵括弧
         ptAngleBrackets = 7 ' <> 大小記号で構成するブラケット
     End Enum
-
-    ' key-value-store
-    Private hashMap As Object
-    Private Const colKVS_KEY As Integer = 2
-    Private Const colKVS_VALUE As Integer = 3
-
-    ' public String getConfig(String key)
-    ' key-value-store    
-    Public Function getConfig(key As String) As String
-        Dim hm As Object
-        Set hm = getInstance()
-        getConfig = hm.Item(key)
-    End Function
-
-    ' ここまでしなくても、シングルトンな気がするが
-    Private Function getInstance() As Object
-        If hashMap Is Nothing Then
-            Call initHM(hashMap)
-        End If
-
-        Set getInstance = hashMap
-    End Function
-
-    Private Sub initHM(ByRef hm As Object)
-        Set hm = CreateObject("Scripting.Dictionary")
-        Dim i, key As String, value As String
-        i = rowCONF_START
-        key = ""
-        value = ""
-
-        With wsCONF
-            Do While .Cells(i, colKVS_KEY) <> ""
-                key = .Cells(i, colKVS_KEY)
-                value = .Cells(i, colKVS_VALUE)
-                hm.Add key, value
-                i = i + 1
-            Loop
-        End With
-    End Sub
 
     ' public static void dPrint(String msg)
     ' write a message down to both the debug console and a log file

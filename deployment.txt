@@ -16,6 +16,7 @@
 ' ------------------------------------------------------------------------
 ' Utility
 ./src/utils/Utils.cls
+./src/utils/Kvs.bas
 
 ' TestCase
 ./src/utils/vbaUnit.bas
