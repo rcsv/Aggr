@@ -1,14 +1,20 @@
-<img src="src/icon-excel-png-7.png" align="right">
+<img src="doc/icon-excel-png-7.png" align="right">
 
 # Aggr
 > Merge data you want to.
 
-A abstract program of data merge using Excel
-Aggr aggregates data from other excel files having the same format.
+## Features (全て予定)
+同じフォーマットで記載されているエクセルのデータをまとめて一つのシートにまとめるマクロです。なぜここまでしてエクセルにこだわるのか。
+- 設定ファイル：シート名*config*を読み込み、動作を変更。マクロを触らずに振る舞いを変えることができる
+- ルール設定：合体の対象が保存されているディレクトリや、そのディレクトリにあっても取り込み対象ではない除外ルール、ファイル名の命名規則等でルールを設定し、複雑な条件下でシートを取り込むことができる
+- 柔軟なシート設定：定義済みテーブルまたは「シート名と開始行、先頭列と終端列」の情報をもとに、情報を取り込み
+- 任意の列をカテゴリと見なし、カテゴリ別でシートを複製する
+- 取り込み後の編集と同期：書き出した後、取り込み元のファイルに同じ情報を書き戻す
 
-## How to use
-**Need to "Trusts access to the VBA Project Object Model before you run the program**.
-Open the target.xlsm, and click the button "start".
+## 注意
+使用にあたっては、セキュリティセンターにて、マクロの設定の中にある開発者向けのマクロ設定、**VBA プロジェクトオブジェクトモデルへのアクセスを信頼する**にチェックを入れてください。
+<img src="doc/notice_1" align="center">
+<img src="doc/notice_2" align="center">
 
 ## License
 
