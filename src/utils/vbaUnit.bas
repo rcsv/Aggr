@@ -1,14 +1,13 @@
 Attribute VB_Name = "vbaUnit"
 
 ' Aggr
+' VBAUnit
 ' ------------------------------------------------------------------------
-' UnitTest Source
+' SHIFT-JIS
+' Unit TEST for Visual Basic for Application
+'   
 
 Option Explicit
 
-Public Sub vbaUnit()
-    debug.print "start"
-    ' write your test plan
 
-    debug.print "done"
-End Sub
+
