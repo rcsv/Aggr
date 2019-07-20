@@ -15,7 +15,7 @@
 ' 1. Utilities Modules / Classes
 ' ------------------------------------------------------------------------
 ' Utility
-./src/utils/Utils.cls
+./src/utils/Utils.bas
 ./src/utils/Kvs.bas
 
 ' TestCase

@@ -2,9 +2,9 @@
 ' Aggr
 ' Imports source code automatically
 ' ------------------------------------------------------------------------
-'   i18n   
-' HOW TO USE
-' insert this source code into "ThisWorkbook"
+'   i18n
+'   HOW TO USE
+'   insert this source code into "ThisWorkbook"
 '
 '
 
@@ -16,13 +16,13 @@ Option Explicit
     Private Const CONF_SRC As String = "deployment.txt"
 
     ' Filename of Export ThisWorkbook
-    Private Const EXPORT_ME As String = "ThisWorkbook-sjis-cls"
+    Private Const EXPORT_ME As String = "ThisWorkbook-sjis.cls"
 
-    ' flag for enabling "ThisWorkbook_Open" Event 
+    ' flag for enabling "ThisWorkbook_Open" Event
     Private Const ENABLE_EVENT_OPEN As Boolean = True
 
     ' Shortcut Key
-    Private Const SHORTCUTKEY_RELOAD As String = "r"
+    Private Const SHORTKEY_RELOAD As String = "r"
 
     ' Event Triggers
     ' --------------------------------------------------------------------
@@ -49,16 +49,17 @@ Option Explicit
 
     ' manual reload
     Public Sub reloadModule()
-        Dim msgError = loadModule("." & Application.PathSeparator & CONF_SRC)
+        Dim msgError As String
+        msgError = loadModule("." & Application.PathSeparator & CONF_SRC)
 
         If Len(msgError) > 0 Then
-            MsgBok msgError
+            MsgBox msgError
         End If
     End Sub
 
     ' manual export me
-    Public Sub exportThisWorkbook
-        Call exportModule("ThisWorkbook", SHORTCUTKEY_RELOAD) 
+    Public Sub exportThisWorkbook()
+        Call exportModule("ThisWorkbook", SHORTKEY_RELOAD)
     End Sub
 
     ' main procedures
@@ -67,9 +68,9 @@ Option Explicit
 
     ' loadModule
     ' read configuration file for deployment and load all files into xlsm file
-    Private Function loadModule(ByVal pathConf As String) As String
+    Private Function loadModule(ByVal pathConf As String) As String
         Dim isClear As Boolean
-        isClear = clearModule
+        isClear = clearModules
 
         If isClear = False Then
             loadModule = "Error: Fail to Remove all modules."
@@ -97,7 +98,8 @@ Option Explicit
 
         ' loading
         Dim i As Integer
-        Dim msgError = ""
+        Dim msgError As String
+        msgError = ""
         
         Dim strPath As Variant
         For Each strPath In arrayModules
@@ -118,7 +120,7 @@ Option Explicit
         For Each component In ThisWorkbook.VBProject.VBComponents
 
             If component.Name = nameModule Then
-                component.Export ThisWorkbook.path & _ 
+                component.Export ThisWorkbook.path & _
                         Application.PathSeparator & _
                         nameFile
                 ' export done.
@@ -155,7 +157,7 @@ Option Explicit
 
     ' countBases (shorthand)
     ' count standard modules still exist inside
-    private Function countBases() As Long
+    Private Function countBases() As Long
         Dim cnt As Long: cnt = countComponents(1) ' bas=1
         countBases = cnt
     End Function
@@ -169,7 +171,7 @@ Option Explicit
 
     ' countComponents
     ' count specified modules
-    Private Function countComponents(ByVal numtype As Integer) As Long
+    Private Function countComponents(ByVal numType As Integer) As Long
         Dim i As Long
         Dim count As Long
         count = 0
@@ -218,7 +220,7 @@ Option Explicit
         If Left(pathFile, 1) Like "[0-9]" Or Left(pathFile, 1) Like "[A-z]" Then
             absPath = ThisWorkbook.path & Application.PathSeparator & pathFile
         Else
-            debug.print TypeName(Me) & " fail to get absolute path."
+            Debug.Print TypeName(Me) & " fail to get absolute path."
         End If
     End Function
 
@@ -230,7 +232,7 @@ Option Explicit
         Else
             checkExistFile = True
         End If
-
+        Exit Function
 ERR_DIR:
         checkExistFile = False
     End Function
@@ -242,29 +244,27 @@ ERR_DIR:
 
         Dim fp As Integer
         fp = FreeFile
-        open pathFile For Input As #fp
+        Open pathFile For Input As #fp
 
         Dim arrayOutput() As String
         Dim countLine As Integer
         countLine = 0
-
-        ReDim Preserve arrayOutput(countLine)
 
         Do Until EOF(fp)
             Dim strLine As String
             Line Input #fp, strLine
 
             Dim isLf As Long
-            is Lf = InStr(strLine, vbLf)
+            isLf = InStr(strLine, vbLf)
 
             If os Like "Windows *" And Not isLf = 0 Then
             Else
                 strLine = Replace(strLine, vbCr, "")
 
                 If Not Left(strLine, 1) = "'" And Len(strLine) > 0 Then
-                    countLine = countLine + 1
                     ReDim Preserve arrayOutput(countLine)
-                    arrayOutput(countLine - 1) = strLine
+                    arrayOutput(countLine) = strLine
+                    countLine = countLine + 1
                 End If
             End If
         Loop
@@ -305,3 +305,4 @@ ERR_DIR:
     End Sub
 
 ' End Class
+
