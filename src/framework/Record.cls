@@ -17,10 +17,10 @@ Attribute VB_Exposed = False
 Option Explicit
 
 ' Public Class Record
-Implements IInitializable, IDisabled
+Implements IInitializable
 
     ' record title
-    Public mTitle As String
+    Private mTitle As String
 
     ' crues for reaching to original files
     Public dist As String
@@ -46,8 +46,12 @@ Implements IInitializable, IDisabled
     Private rowSTART As Integer
     
     ' TITLE cannot set from outer zone
-    Private Property Let mTitle(key As String)
+    Private Property Let Title(key As String)
         mTitle = key
+    End Property
+
+    Public Property Get Title()
+        Title = mTitle
     End Property
 
     ' check flag whether this record is enable/disable for some reason
