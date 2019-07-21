@@ -151,6 +151,15 @@ Option Explicit
         Application.DisplayAlerts = True
     End Sub
 
+    ' Public static void wrapDelete(Worksheet target)
+    ' delete sheet by Name
+    ' @param Worksheet object
+    Public Sub wrapDelete(target As Worksheet)
+        Application.DisplayAlerts = False
+        target.Delete
+        Application.DisplayAlerts = True
+    End Sub
+
 
 
 ' End Module
