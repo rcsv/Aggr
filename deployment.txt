@@ -28,3 +28,7 @@
 ./src/framework/Record.cls
 
 ./src/utils/mFactory.bas
+
+' EntryPoints
+./src/Aggr/EntryPoint.bas
+
